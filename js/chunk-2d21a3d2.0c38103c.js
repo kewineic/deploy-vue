@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d21a3d2"],{bb51:function(e,n,o){"use strict";o.r(n);var s=o("7a23"),a={class:"container"},c=Object(s["g"])("div",{class:"jumbotron mt-2"},[Object(s["g"])("h1",{class:"display-4"},"Bem-vindo!"),Object(s["g"])("p",null,"Aplição disponível para listagem dos gerentes do nosso banco.")],-1);function t(e,n,o,t,d,i){return Object(s["p"])(),Object(s["d"])("div",a,[c])}var d={name:"home"};d.render=t;n["default"]=d}}]);
+//# sourceMappingURL=chunk-2d21a3d2.0c38103c.js.map
