@@ -15,6 +15,27 @@ export const loginMixin = {
   }
 }
 
+export const registerMixin = { 
+  methods: {
+    sendForm() {
+      this.$store.dispatch('registerUser', {
+        nome: this.user.name,
+        email: this.user.email,
+        senha: this.user.password
+      })
+        .then(() =>{ 
+          this.$router.push({ name: 'login' });
+          this.errorMessage = '';
+        })
+        .catch(err => {
+          if (err.request.status) {
+            this.errorMessage = "Email já existente, tente outro!";
+          }
+        });
+    }
+  }
+}
+
 export const logoutMixin = {
   methods: {
     logout() {

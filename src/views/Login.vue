@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { loginMixin } from '../mixins';
+
 export default {
  data() {
    return {
@@ -35,19 +37,7 @@ export default {
    }
  },
  
- methods: {
-  login() {
-    this.$store.dispatch('login', {email: this.user.email, senha: this.user.password})
-      .then(() => {
-        this.$router.push({ name: 'gerentes' });
-         this.errorMessage = '';
-      })
-      .catch(err => {
-        if (err.request.status == 401) {
-          this.errorMessage = "Login ou senha inválido(s)!!!";
-        }
-      });
-  }
- }
+ mixins: [ loginMixin ]
+ 
 }
 </script>

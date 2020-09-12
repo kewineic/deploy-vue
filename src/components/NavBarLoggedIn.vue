@@ -12,7 +12,7 @@
     </li>
     <a href="#" 
       class="nav-link" 
-      @click.prevent="logout()"
+      @click.prevent="logout"
     >
       Logout
     </a>
