@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Gerentes</h1>
     <div class="row">
-      <Gerente v-for="gerente in listManagersMixin" :key="gerente.numero" :gerente="gerente" />
+      <Gerente v-for="gerente in listManagers" :key="gerente.numero" :gerente="gerente" />
     </div>
   </div>
 </template>
