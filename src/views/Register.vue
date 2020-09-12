@@ -14,7 +14,7 @@
       <label for="password">Senha</label>
       <input type="password" class="form-control" v-model="user.password">
     </div>
-
+    <p class="alert alert-danger" v-if="errorMessage">{{ errorMessage }}</p>
     <button class="btn btn-primary">Cadastrar</button>
   </form>
 </div>
@@ -28,22 +28,28 @@ export default {
         name: '',
         email: '',
         password: ''
-      }
+      },
+
+      errorMessage: ''
     }
   },
 
   methods: {
     sendForm() {
-      this.$api.post('auth/register', {
+      this.$store.dispatch('registerUser', {
         nome: this.user.name,
         email: this.user.email,
         senha: this.user.password
       })
-        .then(res =>{ 
-          console.log(res)
-          this.$router.push({ name: 'login' })
+        .then(() =>{ 
+          this.$router.push({ name: 'login' });
+          this.errorMessage = '';
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          if (err.request.status) {
+            this.errorMessage = "Email já existente, tente outro!";
+          }
+        });
     }
   }
 }

@@ -6,6 +6,7 @@ export default createStore({
   state: {
     token: null,
     user: {},
+    newUser: {},
     gerentes: []
   },
   mutations: {
@@ -17,6 +18,10 @@ export default createStore({
     SET_LOGOUT_USER(state) {
       state.token = null;
       state.user = {};
+    },
+
+    CREATE_USER(state, { newUser }) {
+      state.newUser = newUser;
     },
 
     GET_GERENTES(state, gerentes) {
@@ -55,10 +60,21 @@ export default createStore({
       });
     },
 
-    sendForm() {
-
+    registerUser({ commit }, newUser) {
+      return new Promise((resolve, reject) => {
+        Api.post('auth/register', newUser)
+          .then(res => {
+            commit('CREATE_USER', { newUser });
+            resolve(res.data);
+          })
+          .catch(err => {
+            console.log(err);
+            reject(err);
+          });
+      });
     }
   },
+  
   getters: {
     userIsLogged(state) {
       return Boolean(state.token); 
